@@ -1,11 +1,13 @@
 package com.tt.sns.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * Created by wind on 2020/7/8.
  */
+@ApiModel
 @Data
 public class Alarm {
     /**

@@ -1,11 +1,13 @@
 package com.tt.sns.request;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * Created by wind on 2020/7/8.
  */
+@ApiModel
 @Data
 public class PushTokenSaveParam {
     /**

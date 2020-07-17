@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -15,6 +16,7 @@ import java.util.Date;
  * Created by wei on 2020/7/8.
  */
 @Data
+@ApiModel
 public class PushConfig {
     @TableId
     private Long id;
