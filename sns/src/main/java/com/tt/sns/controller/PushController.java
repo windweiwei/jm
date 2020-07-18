@@ -26,7 +26,7 @@ public class PushController {
     @Autowired
     private PushService pushService;
 
-    @ApiOperation(value = "推送token注册接口", notes = "当用户登陆或打开app需要注册推送token")
+    @ApiOperation(value = "推送token注册接口", notes = "当用户登陆或打开app需要注册推送token",response = BaseResponse.class)
     @PostMapping("/api/v3/push_token/save")
     public BaseResponse savePushToken(@RequestBody PushTokenSaveParam param, HttpServletRequest request) {
 
