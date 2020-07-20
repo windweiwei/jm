@@ -69,6 +69,7 @@ public class XiaoMiPush implements Push {
                 .title(title)
                 .description(description).payload(messagePayload)
                 .restrictedPackageName(config.getPackname())
+                .extra("type", message.getDevType())
                 .notifyId(notifyId)
                 .notifyType(-1);     // 使用默认提示音提示 + 震动 + 呼吸灯
 

@@ -16,4 +16,9 @@ public class PushMessage {
      * 推送内容
      */
     private String message;
+    /**
+     * 设备类型
+     */
+
+    private String devType;
 }

@@ -42,13 +42,13 @@ public class JiguangPush implements Push {
 
     @Override
     public PushResult push(String token, PushMessage message, String appVersion) {
-        PushResult  res =new PushResult();
+        PushResult res = new PushResult();
 
         JPushClient jpushClient = new JPushClient(config.getApiSecret(), config.getApiKey(),
                 null, ClientConfig.getInstance());
 
         // For push, all you need do is to build PushPayload object.
-        PushPayload payload = buildPushObject_ios_audienceMore_messageWithExtras(message,token);
+        PushPayload payload = buildPushObject_ios_audienceMore_messageWithExtras(message, token);
 
         try {
             cn.jpush.api.push.PushResult result = jpushClient.sendPush(payload);
@@ -79,7 +79,7 @@ public class JiguangPush implements Push {
             Thread.sleep(5000);
             // 请求结束后，调用 NettyHttpClient 中的 close 方法，否则进程不会退出。
             jpushClient.close();
-        } catch(InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return res;
@@ -90,7 +90,7 @@ public class JiguangPush implements Push {
      *
      * @return
      */
-    public static PushPayload buildPushObject_ios_audienceMore_messageWithExtras(PushMessage message,String token) {
+    public static PushPayload buildPushObject_ios_audienceMore_messageWithExtras(PushMessage message, String token) {
         return PushPayload.newBuilder()
                 .setPlatform(Platform.android_ios())
                 .setAudience(Audience.newBuilder()
@@ -103,7 +103,7 @@ public class JiguangPush implements Push {
                         .setTitle(message.getTitle())
                         .setMsgContent(message.getMessage())
                         .setContentType("application/json")
-                        .addExtra("from", "JPush")
+                        .addExtra("tpye", message.getDevType())
                         .build())
                 .build();
     }

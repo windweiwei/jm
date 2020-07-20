@@ -1,4 +1,4 @@
-package com.tt.sns.enums;
+package com.jimang.enums;
 
 /**
  * Created by wind on 2020/7/10.

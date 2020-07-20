@@ -11,6 +11,11 @@ spring:
     default-property-inclusion: non_null
   resources:
     add-mappings: false
+  http:
+    multipart:
+     enable: true
+     max-file-size: 50MB
+     max-request-size: 50MB
 server:
   tomcat:
     accept-count: 10000

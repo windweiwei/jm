@@ -11,6 +11,9 @@ import lombok.Data;
 @ApiModel
 @Data
 public class Alarm {
+
+    @ApiModelProperty(value = "验证token")
+    private String token;
     /**
      * 标题
      */
@@ -25,7 +28,7 @@ public class Alarm {
      * token
      */
     @ApiModelProperty(value = "推送token")
-    private String token;
+    private String push_token;
     /**
      * 设备id
      */
@@ -41,7 +44,11 @@ public class Alarm {
      * 报警时间
      */
     @ApiModelProperty(value = "报警时间")
-    private Long timeUtc;
+    private Long time;
+
+    @ApiModelProperty(value = "报警时间")
+    private Integer type;
+
 
     @ApiModelProperty(name = "app_version", value = "app版本")
     @JsonProperty("app_version")

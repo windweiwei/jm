@@ -1,7 +1,7 @@
 package com.tt.sns.util;
 
 
-import com.tt.sns.enums.ResponseEnum;
+import com.jimang.enums.ResponseEnum;
 import com.tt.sns.response.BaseResponse;
 
 /**

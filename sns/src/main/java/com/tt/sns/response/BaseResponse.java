@@ -1,6 +1,6 @@
 package com.tt.sns.response;
 
-import com.tt.sns.enums.ResponseEnum;
+import com.jimang.enums.ResponseEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

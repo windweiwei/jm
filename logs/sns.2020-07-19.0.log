@@ -1,0 +1,284 @@
+2020-07-19 12:18:45.896  INFO 8235 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8235 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 12:18:45.899  INFO 8235 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 12:18:47.191  WARN 8235 --- [main] org.mybatis.spring.mapper.ClassPathMapperScanner : No MyBatis mapper was found in '[com.jimang]' package. Please check your configuration.
+2020-07-19 12:18:48.008  INFO 8235 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 12:18:48.024  INFO 8235 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 12:18:48.024  INFO 8235 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 12:18:48.158  INFO 8235 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 12:18:48.158  INFO 8235 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2151 ms
+2020-07-19 12:18:48.271  WARN 8235 --- [main] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usersController': Unsatisfied dependency expressed through field 'usersService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usersServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jimang.mapper.UsersMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-07-19 12:18:48.275  INFO 8235 --- [main] org.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2020-07-19 12:18:48.353  WARN 8235 --- [main] org.apache.catalina.loader.WebappClassLoaderBase : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2020-07-19 12:18:48.364  INFO 8235 --- [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-19 12:18:48.443 ERROR 8235 --- [main] org.springframework.boot.SpringApplication : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usersController': Unsatisfied dependency expressed through field 'usersService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usersServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jimang.mapper.UsersMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.jimang.RestApplication.main(RestApplication.java:14)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usersServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jimang.mapper.UsersMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1304)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jimang.mapper.UsersMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1714)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1270)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 33 common frames omitted
+
+2020-07-19 12:20:23.222  INFO 8240 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8240 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 12:20:23.226  INFO 8240 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 12:20:25.434  INFO 8240 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 12:20:25.450  INFO 8240 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 12:20:25.451  INFO 8240 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 12:20:25.634  INFO 8240 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 12:20:25.635  INFO 8240 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2302 ms
+2020-07-19 12:20:26.801  INFO 8240 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 12:20:26.910  INFO 8240 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:20:27.148  INFO 8240 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 12:20:27.149  INFO 8240 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 12:20:27.184  INFO 8240 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 12:20:27.220  INFO 8240 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 12:20:27.465  INFO 8240 --- [main] com.jimang.RestApplication : Started RestApplication in 5.525 seconds (JVM running for 6.372)
+2020-07-19 12:25:00.437  INFO 8240 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 12:25:00.437  INFO 8240 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 12:25:00.449  INFO 8240 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 11 ms
+2020-07-19 12:31:34.071  INFO 8240 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:31:39.174  INFO 8265 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8265 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 12:31:39.178  INFO 8265 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 12:31:41.271  INFO 8265 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 12:31:41.288  INFO 8265 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 12:31:41.290  INFO 8265 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 12:31:41.424  INFO 8265 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 12:31:41.425  INFO 8265 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2119 ms
+2020-07-19 12:31:42.468  INFO 8265 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 12:31:42.574  INFO 8265 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:31:42.800  INFO 8265 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 12:31:42.801  INFO 8265 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 12:31:42.834  INFO 8265 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 12:31:42.870  INFO 8265 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 12:31:43.130  INFO 8265 --- [main] com.jimang.RestApplication : Started RestApplication in 5.203 seconds (JVM running for 5.915)
+2020-07-19 12:31:56.591  INFO 8265 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 12:31:56.591  INFO 8265 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 12:31:56.602  INFO 8265 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 11 ms
+2020-07-19 12:39:51.917  INFO 8265 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:39:57.218  INFO 8297 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8297 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 12:39:57.221  INFO 8297 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 12:39:59.255  INFO 8297 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 12:39:59.271  INFO 8297 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 12:39:59.271  INFO 8297 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 12:39:59.418  INFO 8297 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 12:39:59.418  INFO 8297 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2081 ms
+2020-07-19 12:40:00.508  INFO 8297 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 12:40:00.630  INFO 8297 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:40:00.934  INFO 8297 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 12:40:00.936  INFO 8297 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 12:40:00.980  INFO 8297 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 12:40:01.015  INFO 8297 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 12:40:01.309  INFO 8297 --- [main] com.jimang.RestApplication : Started RestApplication in 5.259 seconds (JVM running for 5.983)
+2020-07-19 12:40:06.744  INFO 8297 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 12:40:06.744  INFO 8297 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 12:40:06.758  INFO 8297 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 13 ms
+2020-07-19 12:51:05.555  INFO 8297 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:51:12.660  INFO 8328 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8328 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 12:51:12.663  INFO 8328 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 12:51:14.624  INFO 8328 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 12:51:14.640  INFO 8328 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 12:51:14.640  INFO 8328 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 12:51:14.764  INFO 8328 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 12:51:14.764  INFO 8328 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1998 ms
+2020-07-19 12:51:16.232  INFO 8328 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 12:51:16.352  INFO 8328 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 12:51:16.598  INFO 8328 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 12:51:16.599  INFO 8328 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 12:51:16.626  INFO 8328 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 12:51:16.663  INFO 8328 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 12:51:16.956  INFO 8328 --- [main] com.jimang.RestApplication : Started RestApplication in 5.597 seconds (JVM running for 6.294)
+2020-07-19 12:51:23.536  INFO 8328 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 12:51:23.537  INFO 8328 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 12:51:23.549  INFO 8328 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 12 ms
+2020-07-19 13:03:04.838  INFO 8328 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:03:13.439  INFO 8370 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8370 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 13:03:13.443  INFO 8370 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 13:03:15.356  INFO 8370 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 13:03:15.376  INFO 8370 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 13:03:15.377  INFO 8370 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 13:03:15.549  INFO 8370 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 13:03:15.549  INFO 8370 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1968 ms
+2020-07-19 13:03:16.577  INFO 8370 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 13:03:16.676  INFO 8370 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:03:16.891  INFO 8370 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 13:03:16.893  INFO 8370 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 13:03:16.919  INFO 8370 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 13:03:16.957  INFO 8370 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 13:03:17.213  INFO 8370 --- [main] com.jimang.RestApplication : Started RestApplication in 4.944 seconds (JVM running for 5.812)
+2020-07-19 13:03:51.099  INFO 8370 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 13:03:51.100  INFO 8370 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 13:03:51.112  INFO 8370 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 12 ms
+2020-07-19 13:07:22.827  INFO 8370 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:07:28.111  INFO 8384 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8384 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 13:07:28.114  INFO 8384 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 13:07:30.508  INFO 8384 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 13:07:30.523  INFO 8384 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 13:07:30.524  INFO 8384 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 13:07:30.623  INFO 8384 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 13:07:30.624  INFO 8384 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2379 ms
+2020-07-19 13:07:31.675  INFO 8384 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 13:07:31.773  INFO 8384 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:07:31.989  INFO 8384 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 13:07:31.990  INFO 8384 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 13:07:32.020  INFO 8384 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 13:07:32.058  INFO 8384 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 13:07:32.290  INFO 8384 --- [main] com.jimang.RestApplication : Started RestApplication in 5.496 seconds (JVM running for 6.284)
+2020-07-19 13:07:46.749  INFO 8384 --- [http-nio-10220-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 13:07:46.749  INFO 8384 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 13:07:46.761  INFO 8384 --- [http-nio-10220-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 12 ms
+2020-07-19 13:27:54.819  INFO 8384 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:28:00.267  INFO 8407 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8407 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 13:28:00.271  INFO 8407 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 13:28:02.439  INFO 8407 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 13:28:02.453  INFO 8407 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 13:28:02.454  INFO 8407 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 13:28:02.575  INFO 8407 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 13:28:02.575  INFO 8407 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2211 ms
+2020-07-19 13:28:03.671  INFO 8407 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 13:28:03.792  INFO 8407 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:28:04.032  INFO 8407 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 13:28:04.033  INFO 8407 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 13:28:04.060  WARN 8407 --- [main] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.IllegalStateException: Multiple Dockets with the same group name are not supported. The following duplicate groups were discovered. default
+2020-07-19 13:28:04.060  INFO 8407 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:28:04.081  INFO 8407 --- [main] org.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2020-07-19 13:28:04.149  WARN 8407 --- [main] org.apache.catalina.loader.WebappClassLoaderBase : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2020-07-19 13:28:04.167  INFO 8407 --- [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-19 13:28:04.175 ERROR 8407 --- [main] org.springframework.boot.SpringApplication : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.IllegalStateException: Multiple Dockets with the same group name are not supported. The following duplicate groups were discovered. default
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:185)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:554)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.jimang.RestApplication.main(RestApplication.java:16)
+Caused by: java.lang.IllegalStateException: Multiple Dockets with the same group name are not supported. The following duplicate groups were discovered. default
+	at springfox.documentation.spring.web.plugins.DuplicateGroupsDetector.ensureNoDuplicateGroups(DuplicateGroupsDetector.java:45)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsManager.documentationPlugins(DocumentationPluginsManager.java:97)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:162)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	... 14 common frames omitted
+
+2020-07-19 13:29:42.985  INFO 8413 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8413 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 13:29:42.988  INFO 8413 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 13:29:44.824  INFO 8413 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 13:29:44.837  INFO 8413 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 13:29:44.837  INFO 8413 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 13:29:44.934  INFO 8413 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 13:29:44.934  INFO 8413 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1842 ms
+2020-07-19 13:29:46.000  INFO 8413 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 13:29:46.109  INFO 8413 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:29:46.321  INFO 8413 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 13:29:46.322  INFO 8413 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 13:29:46.352  INFO 8413 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 13:29:46.397  INFO 8413 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 13:29:46.705  INFO 8413 --- [main] com.jimang.RestApplication : Started RestApplication in 4.916 seconds (JVM running for 5.607)
+2020-07-19 13:29:59.921  INFO 8413 --- [http-nio-10220-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 13:29:59.922  INFO 8413 --- [http-nio-10220-exec-2] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 13:29:59.938  INFO 8413 --- [http-nio-10220-exec-2] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 16 ms
+2020-07-19 13:34:01.765  INFO 8413 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:34:07.707  INFO 8423 --- [main] com.jimang.RestApplication : Starting RestApplication on weideMBP.lan with PID 8423 (/Users/wei/jm/rest/target/classes started by wei in /Users/wei/jm)
+2020-07-19 13:34:07.711  INFO 8423 --- [main] com.jimang.RestApplication : The following profiles are active: local
+2020-07-19 13:34:09.958  INFO 8423 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10220 (http)
+2020-07-19 13:34:09.973  INFO 8423 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 13:34:09.973  INFO 8423 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 13:34:10.077  INFO 8423 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 13:34:10.078  INFO 8423 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2240 ms
+2020-07-19 13:34:11.155  INFO 8423 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 13:34:11.267  INFO 8423 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 13:34:11.505  INFO 8423 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10220 (http) with context path ''
+2020-07-19 13:34:11.507  INFO 8423 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 13:34:11.537  INFO 8423 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 13:34:11.571  INFO 8423 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 13:34:11.860  INFO 8423 --- [main] com.jimang.RestApplication : Started RestApplication in 5.334 seconds (JVM running for 6.059)
+2020-07-19 13:34:17.645  INFO 8423 --- [http-nio-10220-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-19 13:34:17.646  INFO 8423 --- [http-nio-10220-exec-3] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2020-07-19 13:34:17.656  INFO 8423 --- [http-nio-10220-exec-3] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 10 ms
+2020-07-19 13:36:26.114  INFO 8423 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 20:00:31.804  INFO 11453 --- [main] com.tt.sns.SnsApplication : Starting SnsApplication on weideMBP.lan with PID 11453 (/Users/wei/jm/sns/target/classes started by wei in /Users/wei/jm)
+2020-07-19 20:00:31.807  INFO 11453 --- [main] com.tt.sns.SnsApplication : The following profiles are active: local
+2020-07-19 20:00:33.624  INFO 11453 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10210 (http)
+2020-07-19 20:00:33.638  INFO 11453 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 20:00:33.638  INFO 11453 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 20:00:33.754  INFO 11453 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 20:00:33.754  INFO 11453 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1877 ms
+2020-07-19 20:00:34.704  INFO 11453 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 20:00:34.852  INFO 11453 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 20:00:35.089  INFO 11453 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10210 (http) with context path ''
+2020-07-19 20:00:35.090  INFO 11453 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 20:00:35.113  INFO 11453 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 20:00:35.187  INFO 11453 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 20:00:35.404  INFO 11453 --- [main] com.tt.sns.SnsApplication : Started SnsApplication in 4.646 seconds (JVM running for 5.371)
+2020-07-19 20:00:38.192  INFO 11453 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-19 21:40:46.895  INFO 11603 --- [main] com.tt.sns.SnsApplication : Starting SnsApplication on weideMBP.lan with PID 11603 (/Users/wei/jm/sns/target/classes started by wei in /Users/wei/jm)
+2020-07-19 21:40:46.899  INFO 11603 --- [main] com.tt.sns.SnsApplication : The following profiles are active: local
+2020-07-19 21:40:48.763  INFO 11603 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 10210 (http)
+2020-07-19 21:40:48.779  INFO 11603 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2020-07-19 21:40:48.780  INFO 11603 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-19 21:40:48.912  INFO 11603 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2020-07-19 21:40:48.913  INFO 11603 --- [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1941 ms
+2020-07-19 21:40:49.886  INFO 11603 --- [main] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-07-19 21:40:50.039  INFO 11603 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-19 21:40:50.277  INFO 11603 --- [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 10210 (http) with context path ''
+2020-07-19 21:40:50.278  INFO 11603 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2020-07-19 21:40:50.308  INFO 11603 --- [main] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-07-19 21:40:50.395  INFO 11603 --- [main] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2020-07-19 21:40:50.632  INFO 11603 --- [main] com.tt.sns.SnsApplication : Started SnsApplication in 4.674 seconds (JVM running for 5.431)
+2020-07-19 21:42:48.114  INFO 11603 --- [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'

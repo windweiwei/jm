@@ -1,7 +1,7 @@
 package com.tt.sns.util;
 
 
-import com.tt.sns.enums.PushTypeEnum;
+import com.jimang.enums.PushTypeEnum;
 import com.tt.sns.service.Push;
 import com.tt.sns.service.serviceimpl.HuaweiPush;
 import com.tt.sns.service.serviceimpl.JiguangPush;
