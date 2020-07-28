@@ -1,5 +1,6 @@
 package com.jimang.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.fashionbrot.validated.annotation.Email;
 import com.github.fashionbrot.validated.annotation.NotEmpty;
@@ -33,5 +34,6 @@ public class SignUpSaveUserParam {
     private String password;
     @NotEmpty
     @ApiModelProperty(value = "验证码")
+    @JsonProperty("auth_code")
     private Integer authCode;
 }

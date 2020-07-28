@@ -7,14 +7,13 @@ import com.jimang.model.Users;
 import com.jimang.request.*;
 import com.jimang.response.BaseResponse;
 import com.jimang.services.UsersService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -81,6 +80,74 @@ public class UsersController {
     public BaseResponse forgotPasswprdUpdate(@RequestBody UserForgotPasswordUpdateParam param,
                                              HttpServletRequest request) {
         return usersService.forgotPasswprdUpdate(param, request);
+    }
+
+    @Validated
+    @ApiOperation(value = "修改密码发送验证码", position = 7)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @PostMapping("/change_password/authcode")
+    public BaseResponse changePasswordAuthCode(HttpServletRequest request) {
+        return usersService.changePasswordAuthCode(request);
+
+    }
+
+    @Validated
+    @ApiOperation(value = "修改密码", position = 8)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @PostMapping("/change_password/change")
+    public BaseResponse changePasswordSave(@RequestBody UserChangePasswordParam param, HttpServletRequest request) {
+        return usersService.changePasswordSave(param, request);
+    }
+
+    @Validated
+    @ApiOperation(value = "上传头像", position = 9)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @ApiImplicitParams({@ApiImplicitParam(name = "file", value = "头像文件", required = false,
+            paramType = "body", dataType = "file"),
+            @ApiImplicitParam(name = "url", value = "头像url",
+                    required = false, paramType = "body", dataType = "String")})
+    @PostMapping("/head_portrait/upload")
+    public BaseResponse headPortraitUpload(@RequestParam(required = false) MultipartFile file,
+                                           @RequestParam(required = false) String url,
+                                           HttpServletRequest request) {
+        FileUploadParam param = new FileUploadParam();
+        param.setFile(file);
+        param.setUrl(url);
+        return usersService.headPortraitUpload(param, request);
+    }
+
+    @Validated
+    @ApiOperation(value = "头像下载", position = 10)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @ApiImplicitParams({@ApiImplicitParam(name = "md5", value = "md5", required = false,
+            paramType = "path", dataType = "String"),
+            @ApiImplicitParam(name = "file_name", value = "头像url",
+                    required = false, paramType = "path", dataType = "String")})
+
+    @GetMapping("/head_portrait/download/{md5}/{file_name}")
+    public void headPortaitUpload(@PathVariable String md5,
+                                  @PathVariable(value = "file_name") String fileName,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
+        usersService.headPortraitDownload(md5, fileName, request, response);
+
+    }
+
+    @Validated
+    @ApiOperation(value = "用户信息修改(暂时只能修改昵称)", position = 11)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @PostMapping("/info/update")
+    public BaseResponse userInfoUpdate(@RequestBody UserInfoUpdateParam param, HttpServletRequest request) {
+        return usersService.userInfoUpdate(param, request);
+
+    }
+
+    @Validated
+    @ApiOperation(value = "用户登出", position = 12)
+    @ApiResponses({@ApiResponse(code = 500, message = "服务器内部错误", response = BaseResponse.class)})
+    @PostMapping("/logout")
+    public BaseResponse userSignOut(HttpServletRequest request) {
+        return usersService.userSignOut(request);
     }
 
 

@@ -45,7 +45,6 @@
 
     <springProfile name="dev,test">
         <root level="info">
-            <appender-ref ref="console"/>
             <appender-ref ref="file"/>
         </root>
         <logger name="com.jimang.rest" level="debug"/>

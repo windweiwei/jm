@@ -29,7 +29,6 @@ public class HttpClientUtil {
         Gson gson = new Gson();
         gson.toJson(requestParam.getParam());
         HttpEntity request = new HttpEntity(gson, headers);
-
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
         for (String s : requestParam.getHeaderMap().keySet()) {
             headers.add(s, requestParam.getHeaderMap().get(s));

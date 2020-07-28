@@ -2,6 +2,7 @@ package com.jimang.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.fashionbrot.validated.annotation.NotEmpty;
+import com.github.fashionbrot.validated.annotation.Phone;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,4 +22,6 @@ public class UserLoginParam {
     @NotEmpty
     @ApiModelProperty("密码")
     private String password;
+
+
 }

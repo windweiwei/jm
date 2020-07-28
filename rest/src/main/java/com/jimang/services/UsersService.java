@@ -6,6 +6,7 @@ import com.jimang.request.*;
 import com.jimang.response.BaseResponse;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -67,5 +68,60 @@ public interface UsersService extends IService<Users> {
      */
     BaseResponse forgotPasswprdUpdate(UserForgotPasswordUpdateParam param, HttpServletRequest request);
 
+    /**
+     * 修改密码发送短信
+     *
+     * @param request request
+     * @return 。。
+     */
+
+    BaseResponse changePasswordAuthCode(HttpServletRequest request);
+
+    /**
+     * 修改密码
+     *
+     * @param param   param
+     * @param request request
+     * @return ..
+     */
+    BaseResponse changePasswordSave(UserChangePasswordParam param, HttpServletRequest request);
+
+    /**
+     * 头像上传
+     *
+     * @param param   param
+     * @param request request
+     * @return 。。
+     */
+    BaseResponse headPortraitUpload(FileUploadParam param, HttpServletRequest request);
+
+    /**
+     * 头像下载
+     *
+     * @param md5      md5
+     * @param fileName filename;
+     * @param request  request
+     * @param response response
+     * @return ..
+     */
+    void headPortraitDownload(String md5, String fileName,
+                              HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 用户信息修改
+     *
+     * @param param   param
+     * @param request request
+     * @return 。。
+     */
+    BaseResponse userInfoUpdate(UserInfoUpdateParam param, HttpServletRequest request);
+
+    /**
+     * 用户登出
+     *
+     * @param request request
+     * @return 。。
+     */
+    BaseResponse userSignOut(HttpServletRequest request);
 
 }

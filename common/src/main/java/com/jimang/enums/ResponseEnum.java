@@ -13,7 +13,8 @@ public enum ResponseEnum {
     SIGN_UP_TOKEN_INVALID(5003, "token expired or incorrect"),
     USERS_PHONE_NO_SIGN_UP(5004, "user forgot password but phone no sign up,用户忘记密码但是手机号未注册"),
     USERS_FORGOT_PASSWORD_ACTINE_CODE_ERROR(5005, "users forgot password active_code is error,验证码不对"),
-    CONFIG_ALREADY_EXIT(6000, "config alredy exit");
+    USER_PHONE_OR_EMAIL_EXITS(5006, "phone or email is not registered"),
+    CONFIG_ALREADY_EXIT(6000, "config already exit");
 
     private Integer code;
 

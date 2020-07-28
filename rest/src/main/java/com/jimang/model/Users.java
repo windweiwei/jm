@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -29,10 +30,12 @@ public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @JsonProperty("user_id")
     private Long id;
 
     @ApiModelProperty(value = "用户名")
     @TableField("user_name")
+    @JsonProperty("user_name")
     private String userName;
 
     @ApiModelProperty(value = "密码")
@@ -42,6 +45,7 @@ public class Users implements Serializable {
 
     @ApiModelProperty(value = "昵称")
     @TableField("nike_name")
+    @JsonProperty("nick_name")
     private String nikeName;
 
     @ApiModelProperty(value = "手机号")
@@ -54,10 +58,12 @@ public class Users implements Serializable {
 
     @ApiModelProperty(value = "头像")
     @TableField("head_portrait")
+    @JsonProperty("head_portrait")
     private String headPortrait;
 
     @ApiModelProperty(value = "登陆时间")
     @TableField("last_login_time")
+    @JsonProperty("last_login_time")
     private Date lastLoginTime;
 
     @ApiModelProperty(value = "国家")
@@ -74,10 +80,12 @@ public class Users implements Serializable {
 
     @ApiModelProperty(value = "注册时间")
     @TableField("registration_time")
+    @JsonProperty("registration_time")
     private Date registrationTime;
 
     @ApiModelProperty(value = "蛮牛id")
     @TableField("third_user_id")
+    @JsonIgnore
     private Long thirdUserId;
 
     @ApiModelProperty(value = "修改时间")
