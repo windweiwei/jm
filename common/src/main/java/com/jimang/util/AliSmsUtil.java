@@ -18,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class AliSmsUtil {
-    private static final String accessKeyId = "LTAIGpI4yPje4Ty7";
-    private static final String accessSecret = "u6zbwdWUen24jTBrlRbNPWlqEwgXzi";
+    private static final String accessKeyId = "**";
+    private static final String accessSecret = "**";
 
     public static Boolean sendSms(String phone, String signName,
                                   String templateCode, String templateParam) {
