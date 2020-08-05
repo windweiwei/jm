@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,6 +21,7 @@ import lombok.Data;
 @Data
 public class App {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     @TableField("app_key")
@@ -36,9 +39,15 @@ public class App {
     @JsonProperty("app_name")
     private String appName;
 
+    @TableField("app_type")
+    @ApiModelProperty(value = "app_type")
+    @JsonProperty("app_type")
+    private Integer appType;
+
     @TableField("firm_id")
     @ApiModelProperty(value = "firm_id")
     @JsonProperty("firm_id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long firmId;
 
     @TableField("login_api")

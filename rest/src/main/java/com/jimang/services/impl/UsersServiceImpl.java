@@ -102,6 +102,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         BaseResponse response = new BaseResponse();
         if (null != param.getPhone()) {
             Integer code = (Integer) redisUtil.get("phone_" + param.getPhone());
+            redisUtil.del("phone_" + param.getPhone());
             if (null != code) {
                 if (!code.equals(param.getAuthCode())) {
                     return ResponseUtil.getBaseResponse(response, ResponseEnum.SIGN_UP_TOKEN_INVALID);
@@ -197,7 +198,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
                             thirdAppLoginInfo.setAppSecret(app.getAppSecret());
                             thirdAppLoginInfo.setFirmId(app.getFirmId());
                             loginInfos.add(thirdAppLoginInfo);
-                            redisUtil.sSet("mn" + token, loginResponse.getAccessToken());
+                            redisUtil.hset("mn" + token, String.valueOf(app.getAppType()),
+                                    loginResponse.getAccessToken(), ACCESS_TOKEN_TIME_EXPTRE);
                         } else {
                             log.error(JsonMapper.writeValueAsString(loginResponse));
                         }
@@ -286,6 +288,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         BaseResponse response = new BaseResponse();
         if (null != param.getPhone()) {
             Integer activeCode = (Integer) redisUtil.get("forgot_password_phone" + param.getPhone());
+            redisUtil.del("forgot_password_phone" + param.getPhone());
             if (activeCode == null) {
                 return ResponseUtil.getBaseResponse(response, USERS_FORGOT_PASSWORD_ACTINE_CODE_ERROR);
             } else {
@@ -339,6 +342,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         Users users = getOne(queryWrapper);
         if (null != users.getPhone()) {
             Integer activeCode = (Integer) redisUtil.get("change_password" + users.getPhone());
+            redisUtil.del("change_password" + users.getPhone());
             if (activeCode != null && activeCode.equals(param.getActiveCode())) {
                 users.setPassword(encoder.encode(param.getPassword()));
                 updateById(users);

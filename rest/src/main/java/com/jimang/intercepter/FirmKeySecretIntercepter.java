@@ -21,7 +21,7 @@ public class FirmKeySecretIntercepter extends HandlerInterceptorAdapter {
 
     private final FirmCache firmCache;
 
-    public static final String REQ_ATTR_FIRM_ID = "user_id";
+    public static final String REQ_ATTR_FIRM_ID = "firm_id";
 
     private static final byte[] VALID_ERROR;
 

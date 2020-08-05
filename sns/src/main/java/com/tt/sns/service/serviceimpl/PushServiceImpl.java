@@ -71,7 +71,11 @@ public class PushServiceImpl implements PushService {
     public BaseResponse acceptAndPush(Alarm alarm, HttpServletRequest request, MultipartFile file) {
         BaseResponse response = new BaseResponse();
         QueryWrapper<PushToken> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("uid", alarm.getUid());
+        if (null != alarm.getUid()) {
+            queryWrapper.eq("uid", alarm.getUid());
+        } else {
+            queryWrapper.eq("push_token", alarm.getPush_token());
+        }
         List<PushToken> pushTokens = pushTokensMapper.selectList(queryWrapper);
         QueryWrapper<PushConfig> configQueryWrapper = new QueryWrapper<>();
         List<PushConfig> pushConfigs = pushConfigMapper.selectList(configQueryWrapper);

@@ -1,12 +1,9 @@
 package com.jimang.util;
 
-import com.jimang.mapper.UsersMapper;
 import com.jimang.model.App;
 import com.jimang.model.HttpRequestParam;
-import com.jimang.model.LoginInfo;
 import com.jimang.request.LoginAdminParam;
-import com.jimang.request.MnLoginParam;
-import com.jimang.request.UserLoginParam;
+import com.jimang.request.mn.MnLoginParam;
 import com.jimang.response.AdminLoginResponse;
 import com.jimang.response.BaseResponse;
 import com.jimang.response.CreateUserParam;

@@ -1,16 +1,14 @@
 package com.jimang.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
-import java.time.LocalDateTime;
-
-import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -33,7 +31,8 @@ public class Devices implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "Id主键 ")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     @ApiModelProperty(value = "设备名称")
@@ -41,16 +40,20 @@ public class Devices implements Serializable {
     private String devName;
 
     @ApiModelProperty(value = "设备sn findCam 的uid")
-    @TableField("dev_sn")
-    private String devSn;
+    @TableField("sn")
+    private String sn;
 
     @ApiModelProperty(value = "0:离线 1:在线 2:休眠")
-    @TableField("state")
-    private String state;
+    @TableField("online")
+    private String online;
 
     @ApiModelProperty(value = "设备类型")
     @TableField("type")
     private Integer type;
+    @ApiModelProperty(value = "设备封面")
+
+    @TableField("logo")
+    private String logo;
 
     @ApiModelProperty(value = "设备固件模型")
     @TableField("model")
@@ -60,9 +63,6 @@ public class Devices implements Serializable {
     @TableField("vn")
     private String vn;
 
-    @ApiModelProperty(value = "固件版本")
-    @TableField("version")
-    private String version;
 
     @ApiModelProperty(value = "通道数")
     @TableField("channel")
@@ -71,32 +71,34 @@ public class Devices implements Serializable {
     @ApiModelProperty(value = "厂商id")
     @TableField("firm_id")
     @JsonProperty("firm_id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long firmId;
 
     @ApiModelProperty(value = "用户id")
-    @TableField("user_id")
+    @TableField(value = "user_id", updateStrategy = FieldStrategy.IGNORED)
     @JsonProperty("user_id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long userId;
 
     @ApiModelProperty(value = "添加时间")
     @TableField("add_time")
     @JsonProperty("add_time")
-    private LocalDateTime addTime;
+    private Date addTime;
 
     @ApiModelProperty(value = "绑定时间")
     @TableField("bind_time")
     @JsonProperty("bind_time")
-    private LocalDateTime bindTime;
+    private Date bindTime;
 
     @ApiModelProperty(value = "第一次时间")
     @TableField("first_online_time")
     @JsonProperty("first_online_time")
-    private LocalDateTime firstOnlineTime;
+    private Date firstOnlineTime;
 
     @ApiModelProperty(value = "上一次离线时间")
     @TableField("last_off_time")
     @JsonProperty("last_off_time")
-    private LocalDateTime lastOffTime;
+    private Date lastOffTime;
 
     @ApiModelProperty(value = "图片报警存储时间")
     @TableField("img_alarm_days")

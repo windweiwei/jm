@@ -1,4 +1,4 @@
-package com.jimang.request;
+package com.jimang.request.mn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.fashionbrot.validated.annotation.NotEmpty;

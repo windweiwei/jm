@@ -3,6 +3,7 @@ package com.jimang.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import net.sf.json.JSONObject;
 
@@ -20,6 +21,9 @@ import java.util.List;
 public class Device {
 
     private String id;
+
+    @JsonProperty("app_type")
+    private Integer appType;
     /**
      * 设备sn
      */

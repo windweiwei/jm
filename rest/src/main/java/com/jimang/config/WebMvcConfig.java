@@ -49,7 +49,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new CorsConfig());
         registry.addInterceptor(new FirmKeySecretIntercepter(firmCache))
                 .addPathPatterns("/api/v1/**")
-                .excludePathPatterns("/api/v1/users/head_portrait/download/**");
+                .excludePathPatterns("/api/v1/users/head_portrait/download/**", "/api/v1/devices/cover/download/**");
         registry.addInterceptor(new AcessTokenIntercepter(redisUtil))
                 .addPathPatterns("/api/v1/**")
                 .excludePathPatterns("/api/v1/users/auth_code",
@@ -57,6 +57,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/api/v1/users/forgot_password/update",
                         "/api/v1/users/save",
                         "/api/v1/users/head_portrait/download/**",
+                        "/api/v1/devices/cover/download/**",
                         "/api/v1/users/login");
     }
 
