@@ -168,26 +168,31 @@ public class Device {
      * 存储类型
      */
     @JsonProperty("storage_type")
+    @ApiModelProperty("云存类型")
     private Integer storageType;
     /**
      * 是否领取过免费套餐 0 ：未领取 1：领取过
      */
     @JsonProperty("storage_received")
+    @ApiModelProperty("是否领取过免费套餐 0 ：未领取 1：领取过")
     private Integer storageReceived;
     /**
      * 工作模式状态 0：关闭；1：开启
      */
     @JsonProperty("dev_work_state")
+    @ApiModelProperty("工作模式状态 0：关闭；1：开启")
     private Integer devWorkState;
     /**
      * 固件型号别名
      */
+    @ApiModelProperty("固件型号别名")
     @JsonProperty("model_alias")
     private String modelAlias;
 
     /**
      * 是否加密
      */
+    @ApiModelProperty("是否加密")
     private Integer encryption;
     /**
      * 如果是4G 设备就会有这个值
@@ -196,12 +201,27 @@ public class Device {
     /**
      * 设备分享用户
      */
+    @ApiModelProperty("分享用户")
     private List<ShareUser> users;
 
     @JsonProperty("channel_images")
+    @ApiModelProperty("通道封面")
     private List<ChannelImages> channelImages;
     /**
      * 电池电量
      */
+    @ApiModelProperty("电池")
     private List<BatteryItem> battery;
+
+    @JsonProperty("dev_model")
+    @ApiModelProperty("设备型号 findCam")
+    private String devModel;
+
+    @JsonProperty("dev_code")
+    @ApiModelProperty("设备编码")
+    private String devCode;
+
+    @JsonProperty("product_name")
+    @ApiModelProperty("产品名称，可以当默认名称")
+    private String productName;
 }

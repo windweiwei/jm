@@ -12,6 +12,7 @@ import com.jimang.intercepter.AcessTokenIntercepter;
 import com.jimang.intercepter.FirmKeySecretIntercepter;
 import com.jimang.mapper.AppMapper;
 import com.jimang.mapper.DevicesMapper;
+import com.jimang.mapper.ProductsMapper;
 import com.jimang.mapper.UsersMapper;
 import com.jimang.model.*;
 import com.jimang.request.DeviceBindToUserParam;
@@ -59,6 +60,8 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
     private RedisUtil redisUtil;
     @Autowired
     private OSS ossClient;
+    @Autowired
+    private ProductsMapper productsMapper;
 
     @Override
     public BaseListResponse<Device> getDevices(HttpServletRequest request) {
@@ -94,6 +97,16 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         for (Devices device : devices) {
             Device findCamDevice = new Device();
             BeanUtils.copyProperties(device, findCamDevice);
+            //增加type 类型信息
+            QueryWrapper<Product> productQueryWrapper = new QueryWrapper<>();
+            productQueryWrapper.eq("type", findCamDevice.getType());
+            Product product = productsMapper.selectOne(productQueryWrapper);
+            if (product != null) {
+                findCamDevice.setModel(product.getDevModel());
+                findCamDevice.setDevCode(product.getDevCode());
+                findCamDevice.setProductName(product.getName());
+            }
+
             if (null != findCamDevice.getLogo()) {
                 findCamDevice.setCoverUrl(request.getScheme() + "://" + request.getServerName()
                         + ":" + request.getServerPort() + "/api/v1/devices/cover/download/" + findCamDevice.getLogo());
@@ -139,10 +152,10 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         Long firmId = (Long) request.getAttribute(FirmKeySecretIntercepter.REQ_ATTR_FIRM_ID);
         QueryWrapper<Devices> queryWrapper = new QueryWrapper<>();
         if (null == param.getAppType()) {
-            param.setAppType(getAppType(param.getSn()));
+            param.setAppType(getAppType(param.getSn(), firmId));
         }
         if (param.getAppType().equals(AppTypeEnum.FIND_CAM.getAppType())) {
-            queryWrapper.eq("sn", param.getSn()).eq("firm_id", firmId);
+            queryWrapper.like("sn", param.getSn()).eq("firm_id", firmId);
             Devices device = getOne(queryWrapper);
             if (device == null) {
                 return ResponseUtil.getBaseResponse(response, ResponseEnum.DEVIDE_INVLID_SN);
@@ -178,9 +191,14 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         return ResponseUtil.getBaseResponse(response, ResponseEnum.SUCCESS);
     }
 
-    private Integer getAppType(String sn) {
+    private Integer getAppType(String sn, Long firmId) {
+        //设备sn 要根据sn 的长度查询
         QueryWrapper<Devices> devicesQueryWrapper = new QueryWrapper<>();
-        devicesQueryWrapper.eq("sn", sn);
+        if (sn.length() == 20) {
+            devicesQueryWrapper.like("sn", sn).eq("firm_id", firmId);
+        } else {
+            devicesQueryWrapper.eq("sn", sn).eq("firm_id", firmId);
+        }
         Devices devices = getOne(devicesQueryWrapper);
         if (devices != null) {
             return AppTypeEnum.FIND_CAM.getAppType();
@@ -196,7 +214,7 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         Long userId = (Long) request.getAttribute(AcessTokenIntercepter.REQ_ATTR_USER_ID);
         Long firmId = (Long) request.getAttribute(FirmKeySecretIntercepter.REQ_ATTR_FIRM_ID);
         if (null == param.getAppType()) {
-            param.setAppType(getAppType(param.getSn()));
+            param.setAppType(getAppType(param.getSn(), firmId));
         }
         QueryWrapper<Devices> queryWrapper = new QueryWrapper<>();
         if (param.getAppType() != null && param.getAppType().equals(AppTypeEnum.FIND_CAM.getAppType())) {
@@ -232,12 +250,12 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         Long firmId = (Long) request.getAttribute(FirmKeySecretIntercepter.REQ_ATTR_FIRM_ID);
         //判断是什么app_type；
         if (null == param.getAppType()) {
-            param.setAppType(getAppType(param.getSn()));
+            param.setAppType(getAppType(param.getSn(), firmId));
         }
         //不用考虑设备的归属问题
         if (param.getAppType() != null && param.getAppType().equals(AppTypeEnum.FIND_CAM.getAppType())) {
             QueryWrapper<Devices> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("sn", param.getSn());
+            queryWrapper.like("sn", param.getSn()).eq("firm_id", firmId);
             Devices device = getOne(queryWrapper);
             if (device == null) {
                 return ResponseUtil.getBaseResponse(response, ResponseEnum.DEVIDE_INVLID_SN);
@@ -271,12 +289,11 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
         Long firmId = (Long) request.getAttribute(FirmKeySecretIntercepter.REQ_ATTR_FIRM_ID);
         //判断是什么app_type；
         if (null == appType) {
-            appType = getAppType(sn);
+            appType = getAppType(sn, firmId);
         }
         if (appType.equals(AppTypeEnum.FIND_CAM.getAppType())) {
             QueryWrapper<Devices> devicesQueryWrapper = new QueryWrapper<>();
-            devicesQueryWrapper.eq("sn", sn);
-            devicesQueryWrapper.eq("firm_id", firmId);
+            devicesQueryWrapper.eq("sn", sn).eq("firm_id", firmId);
             Devices devices = getOne(devicesQueryWrapper);
             if (!devices.getUserId().equals(userId)) {
                 return ResponseUtil.getBaseResponse(response, ResponseEnum.DEVIDE_INVLID_SN);
@@ -364,11 +381,22 @@ public class DeviceServiceImpl extends ServiceImpl<DevicesMapper, Devices> imple
     }
 
     private void set(SnDeviceInfo snDeviceInfo, Long userId, Devices device) {
+        snDeviceInfo.setSn(device.getSn());
+        snDeviceInfo.setType(device.getType());
+        QueryWrapper<Product> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("type", device.getType());
+        Product product = productsMapper.selectOne(queryWrapper);
+        if (product != null) {
+            snDeviceInfo.setProductName(product.getName());
+            snDeviceInfo.setDevCode(product.getDevCode());
+        }
         if (device.getUserId() != null) {
             snDeviceInfo.setBindState(device.getUserId().equals(userId) ? 1 : 2);
             BindUser bindUser = new BindUser();
-            Users users = usersMapper.selectById(device.getId());
-            bindUser.setPhone(users.getPhone().replace(users.getPhone().substring(4, 7), "****"));
+            Users users = usersMapper.selectById(device.getUserId());
+            if (null != users) {
+                bindUser.setPhone(users.getPhone().replace(users.getPhone().substring(4, 7), "****"));
+            }
             snDeviceInfo.setBindUser(bindUser);
         } else {
             snDeviceInfo.setBindState(0);

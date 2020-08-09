@@ -1,5 +1,6 @@
 package com.jimang.util;
 
+import com.jimang.enums.ResponseEnum;
 import com.jimang.model.App;
 import com.jimang.model.Device;
 import com.jimang.model.HttpRequestParam;
@@ -79,7 +80,22 @@ public class DeviceUtil {
         deviceBindParam.setVn(vn);
         param.setParam(deviceBindParam);
         String url = BIND_DEVICE_URL.replace("{sn}", sn);
-        return httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        //5001 被别人绑定了 5002 invalid sn 5003 vn error
+
+        BaseResponse response = httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        if (response.getCode().equals(5001)) {
+            response.setCode(ResponseEnum.DEVICE_BIND_TO_ANOTHER.getCode());
+            response.setMsg(ResponseEnum.DEVICE_BIND_TO_ANOTHER.getMsg());
+        }
+        if (response.getCode().equals(5002)) {
+            response.setCode(ResponseEnum.DEVIDE_INVLID_SN.getCode());
+            response.setMsg(ResponseEnum.DEVIDE_INVLID_SN.getMsg());
+        }
+        if (response.getCode().equals(5003)) {
+            response.setCode(ResponseEnum.DEVICE_PASSWORD_ERROR.getCode());
+            response.setMsg(ResponseEnum.DEVICE_PASSWORD_ERROR.getMsg());
+        }
+        return response;
 
     }
 
@@ -104,7 +120,12 @@ public class DeviceUtil {
         mnDeviceUpdateParam.setDevName(devName);
         param.setParam(mnDeviceUpdateParam);
         String url = UPDATE_DEVICE_URL.replace("{sn}", sn);
-        return httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        BaseResponse response = httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        if (response.getCode().equals(5001)) {
+            response.setCode(ResponseEnum.DEVIDE_INVLID_SN.getCode());
+            response.setMsg(ResponseEnum.DEVIDE_INVLID_SN.getMsg());
+        }
+        return response;
     }
 
     /**
@@ -125,7 +146,14 @@ public class DeviceUtil {
         deviceBindParam.setSn(sn);
         param.setParam(deviceBindParam);
         String url = DEVICE_UNBIND_URL.replace("{sn}", sn);
-        return httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        BaseResponse response = httpClientUtil.post(param, mnBaseUrl + url, BaseResponse.class);
+        if (response.getCode() != 2000) {
+            response.setCode(ResponseEnum.DEVICE_UNBIND_FAILURE.getCode());
+            response.setMsg(ResponseEnum.DEVICE_UNBIND_FAILURE.getMsg());
+            return response;
+        } else {
+            return response;
+        }
     }
 
     /**
